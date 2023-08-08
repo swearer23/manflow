@@ -62,16 +62,16 @@ orders = [
     (pencil_assembly, 200),
 ]
 
-# timer.start()
+timer.start()
 
 G = nx.DiGraph()
 G.add_edge(lead_storage, lead_processing)
 G.add_edge(wood_storage, penholder_processing)
 G.add_edge(rubber_storage, eraser_processing)
-G.add_edge(lead_processing, pencil_assembly, weight=4)
-G.add_edge(penholder_processing, pencil_assembly, weight=4)
-G.add_edge(eraser_processing, pencil_assembly, weight=1)
-G.add_edge(eraser_processing, eraser_assembly, weight=1)
+G.add_edge(lead_processing, pencil_assembly)
+G.add_edge(penholder_processing, pencil_assembly)
+G.add_edge(eraser_processing, pencil_assembly)
+G.add_edge(eraser_processing, eraser_assembly)
 for layer, nodes in enumerate(nx.topological_generations(G)):
     # `multipartite_layout` expects the layer as a node attribute, so add the
     # numeric layer value as a node attribute
